@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 
-const DATE_UNITS = [
+type RelativeTimeFormatUnit = "year" | "quarter" | "month" | "week" | "day" | "hour" | "minute" | "second";
+
+const DATE_UNITS: [unit: RelativeTimeFormatUnit, secondsInUnit: number][] = [
   ["day", 86400],
   ["hour", 3600],
   ["minute", 60],
   ["second", 1],
 ];
 
-const getDateDiffs = (timestamp) => {
-  // Convertir `timestamp` a milisegundos si es una cadena
-  const targetTime = typeof timestamp === "string" ? new Date(timestamp).getTime() : timestamp.getTime();
+const getDateDiffs = (timestamp: any) => {
+  const targetTime =
+    typeof timestamp === "string" ? new Date(timestamp).getTime() : timestamp.getTime();
   const now = Date.now();
-  const elapsed = (targetTime - now) / 1000; // Diferencia en segundos
+  const elapsed = (targetTime - now) / 1000;
 
   for (const [unit, secondsInUnit] of DATE_UNITS) {
     if (Math.abs(elapsed) > secondsInUnit || unit === "second") {
@@ -21,7 +23,7 @@ const getDateDiffs = (timestamp) => {
   }
 };
 
-export default function useTimeAgo(timestamp) {
+export default function useTimeAgo(timestamp: Date) {
   const [timeago, setTimeago] = useState(() => getDateDiffs(timestamp));
 
   useEffect(() => {
