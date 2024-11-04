@@ -32,7 +32,7 @@ export default async function Home() {
 
   return (
     <div className="pt-4 w-full">
-      {/* <RealtimePosts serverPosts={data} /> */}
+      <RealtimePosts serverPosts={data} />
     </div>
   );
 }
