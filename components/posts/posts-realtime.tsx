@@ -4,6 +4,7 @@ import supabaseClient from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import PostList from "./post-list";
 import PostCard from "./post-card";
+import { Post } from "@/features/posts/types/Post";
 
 export default function RealtimePosts({ serverPosts }: { serverPosts: any }) {
   const [posts, setPosts] = useState(serverPosts);
@@ -29,7 +30,7 @@ export default function RealtimePosts({ serverPosts }: { serverPosts: any }) {
 
   return (
     <PostList>
-      {posts.map((post) => (
+      {posts.map((post: Post) => (
         <PostCard key={post.id} {...post}></PostCard>
       ))}
     </PostList>
