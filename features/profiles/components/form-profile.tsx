@@ -10,11 +10,16 @@ import Image from "next/image";
 import { Upload } from "lucide-react";
 import { Cross } from "../../../components/icons";
 
+interface Skill {
+  color: string;
+  name: string;
+}
+
 export default function CreateProfileForm() {
-  const [stack, setSkills] = useState([]);
+  const [stack, setSkills] = useState<Skill[]>([]);
   const [description, setDescription] = useState("");
   const [avatar, setAvatar] = useState("");
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
 
   const createProfileWithData = createProfile.bind(
     null,
@@ -23,47 +28,47 @@ export default function CreateProfileForm() {
     avatar
   );
 
-  const handleDeleteSkill = (tecnologieName) => {
-    let arrayWithoutSkill = stack.filter(
-      (element) => element.name != tecnologieName
+  const handleDeleteSkill = (tecnologieName: string) => {
+    const arrayWithoutSkill = stack.filter(
+      (element) => element.name !== tecnologieName
     );
     setSkills(arrayWithoutSkill);
   };
 
-  const handleAddSkill = (color, name) => {
-    // No repeeat
-    let isRepeat = stack.some((element) => element.name === name);
-
-    if (stack.length < 4 && isRepeat === false) {
+  const handleAddSkill = (color: string, name: string) => {
+    const isRepeat = stack.some((element) => element.name === name);
+    if (stack.length < 4 && !isRepeat) {
       setSkills([...stack, { name, color }]);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
   };
 
-  const uploadFile = async (event) => {
-    const file = event.target.files[0];
+  const uploadFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     const bucket = "images";
 
-    const { data, error } = await supabaseClient.storage
-      .from(bucket)
-      .upload(file.name, file);
+    if (file) {
+      const { data, error } = await supabaseClient.storage
+        .from(bucket)
+        .upload(file.name, file);
 
-    if (error) {
-      alert("Error uploading file.");
-      return;
-    } else {
+      if (error || !data) {
+        alert("Error uploading file.");
+        return;
+      }
+
       const {
         data: { publicUrl },
-      } = supabaseClient.storage.from("images").getPublicUrl(data.path);
+      } = supabaseClient.storage.from(bucket).getPublicUrl(data.path);
       setAvatar(publicUrl);
     }
   };
 
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
+  const handleClick = () => {
+    hiddenFileInput.current?.click();
   };
 
   return (
@@ -83,7 +88,7 @@ export default function CreateProfileForm() {
             {avatar ? (
               <Image alt="avatar profile" src={avatar} fill />
             ) : (
-              <Upload className="stroke-foreground"></Upload>
+              <Upload className="stroke-foreground" />
             )}
           </div>
         </div>
@@ -95,17 +100,17 @@ export default function CreateProfileForm() {
           <label htmlFor="username" className="text-base font-medium">
             Username
           </label>
-          <Input type="text" name="username" required></Input>
+          <Input type="text" name="username" required />
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="username" className="text-base font-medium">
+          <label htmlFor="position" className="text-base font-medium">
             Position
           </label>
           <select
             name="position"
             defaultValue="Desarrollador Frontend"
-            className="cursor-pointer appearance-none h-10 rounded-full bg-content-primary border-2 border-border px-3 py-1 *:bg-content-primary *:border-2"
+            className="cursor-pointer appearance-none h-10 rounded-full bg-content-primary border-2 border-border px-3 py-1"
           >
             {positionList.map((item) => (
               <option key={item} value={item} className="border">
@@ -116,20 +121,20 @@ export default function CreateProfileForm() {
         </div>
 
         <div>
-          <label htmlFor="username" className="text-base font-medium">
+          <label htmlFor="urls" className="text-base font-medium">
             Urls
           </label>
           <Input
             type="url"
             name="github"
             placeholder="https://github.com/yourprofile"
-          ></Input>
+          />
           <Input
             type="url"
             name="website"
             placeholder="https://portfolio.com"
             className="mt-2"
-          ></Input>
+          />
         </div>
 
         <div className="flex flex-col ">
@@ -143,24 +148,21 @@ export default function CreateProfileForm() {
             required
           ></textarea>
         </div>
+
         <div>
           <div className="flex justify-between">
             <label className="text-base font-medium">Stack</label>
             <p>{stack.length}/4</p>
           </div>
           <div className="flex flex-wrap gap-3 py-2 border-b-2 border-border min-h-14">
-            {stack.map((item) => (
-              <div key={item.name}>
+            {stack.map(({ name, color }) => (
+              <div key={name}>
                 <div
                   className="rounded-full px-3 py-1 cursor-pointer flex items-center gap-1"
-                  style={{
-                    backgroundColor: `${item.color}1A`,
-                    color: item.color,
-                  }}
-                  onClick={() => handleDeleteSkill(item.name)}
+                  style={{ backgroundColor: `${color}1A`, color: color }}
+                  onClick={() => handleDeleteSkill(name)}
                 >
-                  {item.name}
-
+                  {name}
                   <Cross />
                 </div>
               </div>
@@ -184,10 +186,11 @@ export default function CreateProfileForm() {
             </div>
           ))}
         </div>
+
         <SubmitButton
           pendingText="Creating..."
           type="submit"
-          className="mt-4 font-medium text-black hover:bg-foreground "
+          className="mt-4 font-medium text-black hover:bg-foreground"
         >
           Create profile
         </SubmitButton>

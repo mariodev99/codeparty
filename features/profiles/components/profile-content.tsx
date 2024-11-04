@@ -1,8 +1,6 @@
 "use client";
 
-import PostList from "@/components/posts/post-list";
 import Tab from "../../../components/ui/tab";
-import PostCard from "@/components/posts/post-card";
 import { useState } from "react";
 
 export default function ProfileContent() {

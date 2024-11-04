@@ -6,7 +6,6 @@ import NavLink from "@/components/ui/nav-link";
 import { LeftSidenavLinks } from "@/const";
 import { Plus } from "@/components/icons";
 import { signOutAction } from "@/app/actions";
-import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import LogoutButton from "@/components/common/button-logout";
 
 const LeftSidenav = () => {

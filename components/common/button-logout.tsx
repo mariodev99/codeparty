@@ -5,10 +5,12 @@ import { ReactNode } from "react";
 export default function LogoutButton({
   children,
   pendingText,
+  formAction,
   ...props
 }: {
   children: ReactNode;
   pendingText: string;
+  formAction: () => Promise<void>;
 }) {
   const { pending } = useFormStatus();
 
@@ -17,9 +19,10 @@ export default function LogoutButton({
       type="submit"
       aria-disabled={pending}
       className="flex items-center gap-2 group text-content-secondary mt-4 cursor-pointer"
+      onClick={formAction}
       {...props}
     >
-      <Exit className={"group-hover:stroke-red-500"} />
+      <Exit className="group-hover:stroke-red-500" />
       <div className="group-hover:text-red-500 font-normal text-base md:hidden lg:block">
         {pending ? pendingText : children}
       </div>
