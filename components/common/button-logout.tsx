@@ -1,7 +1,15 @@
 import { useFormStatus } from "react-dom";
 import { Exit } from "../icons";
+import { ReactNode } from "react";
 
-export default function LogoutButton({ children, pendingText, ...props }) {
+export default function LogoutButton({
+  children,
+  pendingText,
+  ...props
+}: {
+  children: ReactNode;
+  pendingText: string;
+}) {
   const { pending } = useFormStatus();
 
   return (
