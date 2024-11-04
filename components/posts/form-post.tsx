@@ -5,17 +5,15 @@ import { SubmitButton } from "../ui/submit-button";
 import { createPost } from "@/features/posts/actions";
 import supabaseClient from "@/utils/supabase/client";
 import Image from "next/image";
-import { RotateCcw, Upload } from "lucide-react";
-import { Photo } from "../icons";
+import { Upload } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross } from "../icons";
 
 export default function FormPost() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
-  const [showModal, setShowModal] = useState(false);
 
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
     setContent(e.target.value);
@@ -30,12 +28,12 @@ export default function FormPost() {
 
   const createPostWithData = createPost.bind(null, user, image, content);
 
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
+  const handleClick = () => {
+    hiddenFileInput.current?.click();
   };
 
-  const uploadFile = async (event) => {
-    const file = event.target.files[0];
+  const uploadFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     const bucket = "images";
 
     if (file) {
