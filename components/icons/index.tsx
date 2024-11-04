@@ -38,7 +38,7 @@ export const Back = () => {
   );
 };
 
-export const Searchsvg = (props) => {
+export const Searchsvg = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ export const Searchsvg = (props) => {
   );
 };
 
-export const HomeIcon = (props) => {
+export const HomeIcon = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ export const Save = ({ isSave }: { isSave: boolean }) => {
   );
 };
 
-export const CommonSave = (props) => {
+export const CommonSave = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -233,7 +233,7 @@ export const PlusRounded = () => (
   </svg>
 );
 
-export const Exit = (props) => (
+export const Exit = (props: any) => (
   <svg
     height="21"
     viewBox="0 0 21 21"
@@ -257,7 +257,7 @@ export const Exit = (props) => (
   </svg>
 );
 
-export const User = (props) => {
+export const User = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
