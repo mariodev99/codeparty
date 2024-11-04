@@ -22,7 +22,7 @@ export default function FormPost() {
   let user = {
     username: "mariodev",
     avatar:
-      "https://fwrawrtdsrrumgarhmds.supabase.co/storage/v1/object/public/images/Group%2020.jpg",
+      "https://fwrawrtdsrrumgarhmds.supabase.co/storage/v1/object/public/images/Logo.jpg",
     position: "front",
   };
 
