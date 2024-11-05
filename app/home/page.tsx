@@ -1,7 +1,3 @@
-import { SubmitButton } from "@/components/ui/submit-button";
-import PostCard from "@/components/posts/post-card";
-import PostList from "@/components/posts/post-list";
-import { signOutAction } from "../actions";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import RealtimePosts from "@/components/posts/posts-realtime";

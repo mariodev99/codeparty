@@ -1,6 +1,6 @@
 "use client";
 
-import { SetStateAction, useRef, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import { SubmitButton } from "../ui/submit-button";
 import { createPost } from "@/features/posts/actions";
 import supabaseClient from "@/utils/supabase/client";
@@ -8,8 +8,9 @@ import Image from "next/image";
 import { Upload } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross } from "../icons";
+import { Profile } from "@/types/profiles";
 
-export default function FormPost() {
+export default function FormPost({ profile }: { profile: Profile }) {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
 
@@ -20,10 +21,9 @@ export default function FormPost() {
   };
 
   let user = {
-    username: "mariodev",
-    avatar:
-      "https://fwrawrtdsrrumgarhmds.supabase.co/storage/v1/object/public/images/Logo.jpg",
-    position: "front",
+    username: profile.username,
+    avatar: profile.avatar,
+    position: profile.position,
   };
 
   const createPostWithData = createPost.bind(null, user, image, content);
