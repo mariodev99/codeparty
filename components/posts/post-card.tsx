@@ -27,7 +27,7 @@ function PostCard({ user, content, saves, likes, image, created_at }: Post) {
 
   return (
     <div className="w-full border border-border rounded-3xl p-4 bg-content-primary text-sm md:text-base">
-      <div className="flex gap-2">
+      <div className="flex gap-2 justify-between">
         <ProfileCard />
         <p className="text-content-secondary text-sm md:pt-1">{dateago}</p>
       </div>
