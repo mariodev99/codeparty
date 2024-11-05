@@ -3,12 +3,12 @@
 import { createProfile } from "@/app/create-profile/actions";
 import { useRef, useState } from "react";
 import { positionList, skillsList } from "@/const";
-import { SubmitButton } from "../../../components/ui/submit-button";
-import { Input } from "../../../components/ui/input";
+import { SubmitButton } from "../ui/submit-button";
+import { Input } from "../ui/input";
 import supabaseClient from "@/utils/supabase/client";
 import Image from "next/image";
 import { Upload } from "lucide-react";
-import { Cross } from "../../../components/icons";
+import { Cross } from "../icons";
 
 interface Skill {
   color: string;
@@ -170,7 +170,7 @@ export default function CreateProfileForm() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 ">
+        <div className="flex flex-wrap gap-2 ">
           {skillsList.map((item) => (
             <div key={item.name}>
               <div
