@@ -96,6 +96,7 @@ export default function ButtonEditProfile({
       <SheetContent
         side={"bottom"}
         className="h-96 overflow-y-scroll rounded-t-2xl md:rounded-t-3xl"
+        onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <SheetHeader className="flex justify-center">
           <SheetTitle className="mb-2">Edit profile</SheetTitle>
