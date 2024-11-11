@@ -1,4 +1,12 @@
 "use client";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { usePathname } from "next/navigation";
 
@@ -12,7 +20,21 @@ export default function TopBar() {
         <ThemeSwitcher />
       </div>
       <div className="flex md:hidden justify-between items-center h-14 w-full px-2 text-lg font-medium bg-background opacity-95  text-white border-b border-border">
-        <div>avatar</div>
+        <Sheet>
+          <SheetTrigger>
+            <div className="cursor-pointer h-8 w-8 border border-border rounded-full bg-content-primary"></div>
+          </SheetTrigger>
+          <SheetContent
+            side={"left"}
+            className=""
+            onOpenAutoFocus={(e) => e.preventDefault()}
+          >
+            <SheetHeader className="">
+              <SheetTitle className="hidden">Edit profile</SheetTitle>
+            </SheetHeader>
+            codeparty
+          </SheetContent>
+        </Sheet>
         <ThemeSwitcher />
       </div>
     </div>

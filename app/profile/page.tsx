@@ -73,7 +73,7 @@ export default async function Page() {
         </div>
       </div>
 
-      <ProfileContent />
+      <ProfileContent userId={user.id} />
     </div>
   );
 }
