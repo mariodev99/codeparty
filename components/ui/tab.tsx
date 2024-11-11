@@ -27,7 +27,7 @@ const TabBox = memo(({ children, isActive, handleClick }: TabBoxProps) => {
 
 export default function Tab({ setShowOption, showOption }: TabProps) {
   return (
-    <div className="grid grid-cols-2 gap-1 font-medium text-sm md:text-base bg-content-primary rounded-full p-1 text-center my-6 ">
+    <div className="grid grid-cols-2 gap-1 font-medium text-sm md:text-base bg-content-primary rounded-full p-1 text-center mt-6 mb-4 ">
       <TabBox handleClick={() => setShowOption(true)} isActive={showOption}>
         Posts
       </TabBox>

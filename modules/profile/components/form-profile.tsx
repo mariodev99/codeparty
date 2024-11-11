@@ -1,19 +1,15 @@
 "use client";
 
-import { createProfile } from "@/app/create-profile/actions";
 import { useRef, useState } from "react";
 import { positionList, skillsList } from "@/const";
-import { SubmitButton } from "../ui/submit-button";
-import { Input } from "../ui/input";
+import { SubmitButton } from "../../../components/ui/submit-button";
+import { Input } from "../../../components/ui/input";
 import supabaseClient from "@/utils/supabase/client";
 import Image from "next/image";
-import { Upload } from "lucide-react";
-import { Cross } from "../icons";
-
-interface Skill {
-  color: string;
-  name: string;
-}
+import { RotateCcw, Upload } from "lucide-react";
+import { Cross } from "../../../components/icons";
+import { Skill } from "@/modules/profile/types";
+import { createProfile } from "@/modules/profile/actions";
 
 export default function CreateProfileForm() {
   const [stack, setSkills] = useState<Skill[]>([]);
@@ -28,9 +24,9 @@ export default function CreateProfileForm() {
     avatar
   );
 
-  const handleDeleteSkill = (tecnologieName: string) => {
+  const handleDeleteSkill = (skillName: string) => {
     const arrayWithoutSkill = stack.filter(
-      (element) => element.name !== tecnologieName
+      (element) => element.name !== skillName
     );
     setSkills(arrayWithoutSkill);
   };
@@ -86,7 +82,18 @@ export default function CreateProfileForm() {
         >
           <div className="relative h-20 md:h-24 w-20 md:w-24 overflow-hidden rounded-full border-2 bg-content-primary flex justify-center items-center">
             {avatar ? (
-              <Image alt="avatar profile" src={avatar} fill />
+              <div className="relative w-full h-full flex justify-center items-center group ">
+                <Image
+                  alt="avatar profile"
+                  src={avatar}
+                  fill
+                  objectFit="cover"
+                  className="group-hover:hidden "
+                />
+                <div className="hidden group-hover:block ">
+                  <RotateCcw />
+                </div>
+              </div>
             ) : (
               <Upload className="stroke-foreground" />
             )}
@@ -122,7 +129,7 @@ export default function CreateProfileForm() {
 
         <div>
           <label htmlFor="urls" className="text-base font-medium">
-            Urls
+            Links
           </label>
           <Input
             type="url"

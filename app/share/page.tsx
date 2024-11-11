@@ -1,5 +1,5 @@
 import ShareContent from "@/components/share-page-content";
-import { Profile } from "@/types/profiles";
+import { Profile } from "@/modules/profile/types";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -14,14 +14,12 @@ export default async function Page() {
     redirect("/sign-in");
   }
 
-  // Especifica que `data` debe ser del tipo `Profile`
   const { data, error } = await supabase
-    .from("profiles") // Declara explícitamente el tipo `Profile`
-    .select("*") // Asegúrate de seleccionar las columnas necesarias
+    .from("profiles")
+    .select("*")
     .eq("id", user.id)
-    .single();
+    .single<Profile>();
 
-  // Redirige si `data` no contiene un perfil
   if (!data) {
     redirect("/create-profile");
   }

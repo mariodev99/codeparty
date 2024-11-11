@@ -2,13 +2,12 @@
 
 import { SetStateAction, useEffect, useRef, useState } from "react";
 import { SubmitButton } from "../ui/submit-button";
-import { createPost } from "@/features/posts/actions";
 import supabaseClient from "@/utils/supabase/client";
 import Image from "next/image";
-import { Upload } from "lucide-react";
+import { Crosshair, CrossIcon, Upload, X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Cross } from "../icons";
-import { Profile } from "@/types/profiles";
+import { Profile } from "@/modules/profile/types";
+import { createPost } from "@/modules/post/actions";
 
 export default function FormPost({ profile }: { profile: Profile }) {
   const [content, setContent] = useState("");
@@ -86,9 +85,11 @@ export default function FormPost({ profile }: { profile: Profile }) {
             {image && (
               <div className="h-14 w-14 rounded-lg relative ">
                 <div
-                  className="relative -top-2 left-12 h-5 w-5 bg-red-500 rounded-full cursor-pointer"
+                  className="z-10 relative -top-2 left-12 w-6 h-6 flex justify-center items-center bg-red-500 rounded-full cursor-pointer"
                   onClick={deleteImage}
-                ></div>
+                >
+                  <X size={21} />
+                </div>
 
                 <Dialog.Root>
                   <Dialog.Trigger asChild>
@@ -103,8 +104,18 @@ export default function FormPost({ profile }: { profile: Profile }) {
                   <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 data-[state=open]:animate-overlayShow bg-black/30 backdrop-blur-lg	" />
                     <Dialog.Title>Imagen</Dialog.Title>
-                    <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-md p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow">
-                      <div className="relative w-96 h-96">
+                    <Dialog.Content className="z-20 fixed left-1/2 top-1/2 max-h-[85vh] w-[90vw] -translate-x-1/2 -translate-y-1/2 rounded-md p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow">
+                      <Dialog.Close
+                        asChild
+                        className="flex justify-center w-full mb-1"
+                      >
+                        <div>
+                          <button className="bg-red-500 p-2 rounded-full border-none">
+                            <X />
+                          </button>
+                        </div>
+                      </Dialog.Close>
+                      <div className="relative w-full h-96">
                         <Image
                           alt="content"
                           src={image}
@@ -113,11 +124,6 @@ export default function FormPost({ profile }: { profile: Profile }) {
                           className="rounded-lg"
                         />
                       </div>
-                      <Dialog.Close asChild>
-                        <button className="bg-red-400 p-3 rounded-full border-none">
-                          <Cross />
-                        </button>
-                      </Dialog.Close>
                     </Dialog.Content>
                   </Dialog.Portal>
                 </Dialog.Root>

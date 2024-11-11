@@ -5,8 +5,8 @@ import React from "react";
 import NavLink from "@/components/ui/nav-link";
 import { LeftSidenavLinks } from "@/const";
 import { Plus } from "@/components/icons";
-import { signOutAction } from "@/app/actions";
 import LogoutButton from "@/components/common/button-logout";
+import { signOutAction } from "@/modules/auth/actions";
 
 const LeftSidenav = () => {
   return (

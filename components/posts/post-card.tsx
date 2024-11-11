@@ -2,7 +2,7 @@
 
 import { Comment, Like, Save } from "@/components/icons";
 import Image from "next/image";
-import { Post } from "../../features/posts/types/Post";
+import { Post } from "../../modules/post/types";
 import useTimeAgo from "@/hooks/useTimeago";
 
 function PostCard({ user, content, saves, likes, image, created_at }: Post) {
@@ -13,7 +13,7 @@ function PostCard({ user, content, saves, likes, image, created_at }: Post) {
     <div className="flex gap-2">
       {/* avatar */}
       <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary relative overflow-hidden ">
-        <Image alt="avatar" src={user.avatar} fill />
+        {user.avatar && <Image alt="avatar" src={user.avatar} fill />}
       </div>
       {/* username */}
       <div>

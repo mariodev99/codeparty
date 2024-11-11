@@ -1,8 +1,8 @@
 "use server"
 
+import { UserPostData } from "@/modules/post/types";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { UserPostData } from "./types/Post";
 
 export async function createPost(user: UserPostData, image: string, content:string) {
     const supabase = await createClient();

@@ -1,8 +1,10 @@
 export default async function Index() {
   return (
     <>
-      <main className="flex-1 flex flex-col gap-6 px-4">
-        <h2 className="font-medium text-xl mb-4">codeparty</h2>
+      <main className="h-screen w-full flex justify-center items-center">
+        <h2 className="text-center font-medium text-2xl mb-4 text-foreground">
+          codeparty
+        </h2>
       </main>
     </>
   );

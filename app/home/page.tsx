@@ -24,7 +24,10 @@ export default async function Home() {
     }
   }
 
-  const { data, error } = await supabase.from("posts").select();
+  const { data, error } = await supabase
+    .from("posts")
+    .select()
+    .order("created_at", { ascending: false });
 
   return (
     <div className="pt-4 w-full">
