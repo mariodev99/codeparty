@@ -10,7 +10,7 @@ import PostCard from "@/components/posts/post-card";
 
 export default function ProfileContent({ userId }: { userId: string }) {
   const [showPublications, setShowPublications] = useState(true);
-  const [posts, setPosts] = useState<Post[]>();
+  const [posts, setPosts] = useState<any | null>(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +59,8 @@ export default function ProfileContent({ userId }: { userId: string }) {
           </div>
         )}
         <PostList>
-          {posts && posts?.map((item) => <PostCard key={item.id} {...item} />)}
+          {posts &&
+            posts?.map((item: Post) => <PostCard key={item.id} {...item} />)}
         </PostList>
 
         {posts?.length === 0 && (
