@@ -1,4 +1,3 @@
-import { signInAction } from "@/app/actions";
 import { FormMessage, Message } from "@/components/ui/form-message";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { signInAction } from "@/modules/auth/actions";
 
 export default async function Login(props: { searchParams: Promise<Message> }) {
   const supabase = await createClient();

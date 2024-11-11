@@ -1,10 +1,10 @@
-import { signUpAction } from "@/app/actions";
 import { FormMessage, Message } from "@/components/ui/form-message";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { SmtpMessage } from "../smtp-message";
+import { signUpAction } from "@/modules/auth/actions";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
