@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { SmtpMessage } from "../smtp-message";
 import { signUpAction } from "@/modules/auth/actions";
+import Logo from "@/components/Logo";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
@@ -20,7 +21,8 @@ export default async function Signup(props: {
 
   return (
     <>
-      <form className="flex flex-col min-w-64 max-w-64 mx-auto">
+      <form className="h-screen flex justify-center flex-col min-w-64">
+        <Logo className="text-2xl mb-4" />
         <h1 className="text-2xl font-medium">Sign up</h1>
         <p className="text-sm text text-foreground">
           Already have an account?{" "}

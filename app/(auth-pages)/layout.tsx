@@ -1,3 +1,5 @@
+import Logo from "@/components/Logo";
+
 export default async function Layout({
   children,
 }: {

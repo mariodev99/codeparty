@@ -1,14 +1,14 @@
-export default function Logo() {
+export default function Logo(props: any) {
   return (
-    <>
-      <div className="hidden lg:block text-xl text-foreground">
+    <div className="text-xl" {...props}>
+      <div className="hidden lg:block  text-foreground">
         <span className="text-primary">{"{Code"}</span>
         {"party}"}
       </div>
-      <div className="block lg:hidden text-xl text-primary">
+      <div className="block lg:hidden text-primary">
         <span className="text-primary">{"{"}</span>
         {"}"}
       </div>
-    </>
+    </div>
   );
 }

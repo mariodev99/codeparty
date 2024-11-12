@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { signInAction } from "@/modules/auth/actions";
+import Logo from "@/components/Logo";
 
 export default async function Login(props: { searchParams: Promise<Message> }) {
   const supabase = await createClient();
@@ -20,7 +21,9 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
 
   const searchParams = await props.searchParams;
   return (
-    <form className="flex-1 flex flex-col min-w-64">
+    <form className="h-screen flex justify-center flex-col min-w-64">
+      <Logo className="text-2xl mb-4" />
+
       <h1 className="text-2xl font-medium">Sign in</h1>
       <p className="text-sm text-foreground">
         Don't have an account?{" "}
