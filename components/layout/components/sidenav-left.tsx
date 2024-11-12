@@ -7,20 +7,14 @@ import { LeftSidenavLinks } from "@/const";
 import { Plus } from "@/components/icons";
 import LogoutButton from "@/components/common/button-logout";
 import { signOutAction } from "@/modules/auth/actions";
+import Logo from "@/components/Logo";
 
 const LeftSidenav = () => {
   return (
     <div className="fixed flex flex-col items-center lg:items-start h-full px-4 py-6 text-lg font-semibold">
-      <div className="hidden lg:block text-xl text-foreground">
-        <span className="text-primary">{"{Code"}</span>
-        {"party}"}
-      </div>
-      <div className="block lg:hidden text-xl text-primary">
-        <span className="text-primary">{"{"}</span>
-        {"}"}
-      </div>
+      <Logo />
 
-      <div className="flex flex-col  gap-4 mt-6">
+      <div className="flex flex-col gap-4 mt-6">
         {LeftSidenavLinks.map((link, index) => (
           <NavLink key={index} {...link} />
         ))}

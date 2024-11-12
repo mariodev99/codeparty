@@ -47,6 +47,7 @@ export const Searchsvg = (props: any) => {
       height="24"
       fill="none"
       strokeWidth="1.5"
+      className="stroke-foreground"
       {...props}
     >
       <path
@@ -66,7 +67,7 @@ export const HomeIcon = (props: any) => {
       height="24"
       viewBox="0 0 21 21"
       fill="none"
-      stroke="#939393"
+      className="stroke-foreground"
       strokeWidth="1.5"
       {...props}
     >
@@ -154,7 +155,7 @@ export const CommonSave = (props: any) => {
       height="24"
       viewBox="0 0 21 21"
       fill="none"
-      stroke="#939393"
+      className="stroke-foreground"
       strokeWidth={"1.5"}
       {...props}
     >
@@ -239,7 +240,7 @@ export const Exit = (props: any) => (
     viewBox="0 0 21 21"
     width="21"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#939393"
+    className="stroke-foreground"
     strokeWidth="1.5"
     {...props}
   >
@@ -265,7 +266,7 @@ export const User = (props: any) => {
       height="24"
       viewBox="0 0 21 21"
       fill="none"
-      stroke="#939393"
+      className="stroke-foreground"
       strokeWidth="1.5"
       {...props}
     >

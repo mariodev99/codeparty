@@ -1,5 +1,9 @@
 "use client";
 
+import LogoutButton from "@/components/common/button-logout";
+import NavLink from "@/components/common/NavLink";
+import { Exit } from "@/components/icons";
+import Logo from "@/components/Logo";
 import {
   Sheet,
   SheetContent,
@@ -8,6 +12,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
+import { LeftSidenavLinks } from "@/const";
+import { signOutAction } from "@/modules/auth/actions";
+import { Plus } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function TopBar() {
@@ -30,9 +38,44 @@ export default function TopBar() {
             onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <SheetHeader className="">
-              <SheetTitle className="hidden">Edit profile</SheetTitle>
+              <SheetTitle className="hidden">Navigation wrapper</SheetTitle>
             </SheetHeader>
-            codeparty
+            <div className="flex flex-col h-full">
+              <Logo />
+              <div className="flex flex-col gap-4 mt-8">
+                {LeftSidenavLinks.map((link, index) => (
+                  <Link
+                    key={link.title}
+                    href={link.path}
+                    className="text-foreground text-2xl flex items-center gap-2"
+                  >
+                    {link.icon}
+                    {link.title}
+                  </Link>
+                ))}
+                <div className="pt-8">
+                  <Link
+                    className="bg-primary text-white my-6 rounded-full py-2 px-8 text-xl font-medium"
+                    href={"/share"}
+                  >
+                    Share
+                  </Link>
+                </div>
+              </div>
+              <div className="flex-1 flex items-end">
+                <form action={signOutAction}>
+                  <button
+                    type="submit"
+                    className="flex items-center gap-2 group text-foreground mt-4 cursor-pointer text-2xl"
+                  >
+                    <Exit className="group-hover:stroke-red-500 stroke-foreground" />
+                    <div className="group-hover:text-red-500 font-normal text-base md:hidden lg:block">
+                      Logout
+                    </div>
+                  </button>
+                </form>
+              </div>
+            </div>
           </SheetContent>
         </Sheet>
         <ThemeSwitcher />

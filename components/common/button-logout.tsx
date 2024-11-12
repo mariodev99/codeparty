@@ -22,7 +22,7 @@ export default function LogoutButton({
       onClick={formAction}
       {...props}
     >
-      <Exit className="group-hover:stroke-red-500" />
+      <Exit className="group-hover:stroke-red-500 stroke-content-secondary" />
       <div className="group-hover:text-red-500 font-normal text-base md:hidden lg:block">
         {pending ? pendingText : children}
       </div>
