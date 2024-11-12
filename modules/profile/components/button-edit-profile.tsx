@@ -106,7 +106,7 @@ export default function ButtonEditProfile({
             <div>Edit profile</div>
           </div>
         </SheetHeader>
-        <div className="overflow-y-scroll h-[450px] py-4">
+        <div className="overflow-y-scroll h-[450px] p-4 ">
           <input
             type="file"
             onChange={uploadFile}

@@ -21,14 +21,13 @@ export default function ProfileContent({ userId }: { userId: string }) {
         .select()
         .eq("user_id", userId);
 
-      if (data) {
-        setPosts(data);
-      }
-
       if (error) {
         console.error(error);
         setError(true);
+      } else {
+        setPosts(data || []);
       }
+
       setLoading(false);
     };
 
