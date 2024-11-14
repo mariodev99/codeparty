@@ -19,12 +19,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function TopBar() {
-  const pathname = usePathname().slice(1);
+  const pathname = usePathname();
+  const isPostPage = pathname.includes("osts/");
+
+  const pageTitle = isPostPage ? "Post" : pathname.slice(1);
 
   return (
     <div className="sticky top-0 w-full z-40 ">
       <div className="capitalize hidden md:flex justify-between items-center w-full px-2 py-4 text-lg font-medium bg-background opacity-95  text-foreground border-b border-border">
-        {pathname}
+        {pageTitle}
         <ThemeSwitcher />
       </div>
       <div className="flex md:hidden justify-between items-center h-14 w-full px-2 text-lg font-medium bg-background opacity-95  text-white border-b border-border">

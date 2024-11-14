@@ -5,8 +5,8 @@ import Tab from "@/components/ui/tab";
 import { useEffect, useState } from "react";
 import { Post } from "@/modules/post/types";
 import { LoaderCircle } from "lucide-react";
-import PostList from "@/components/posts/post-list";
-import PostCard from "@/components/posts/post-card";
+import PostCard from "@/modules/post/components/post-card";
+import PostList from "@/modules/post/components/post-list";
 
 export default function ProfileContent({ userId }: { userId: string }) {
   const [showPublications, setShowPublications] = useState(true);
@@ -19,6 +19,7 @@ export default function ProfileContent({ userId }: { userId: string }) {
       const { data, error } = await supabaseClient
         .from("posts")
         .select()
+        .order("created_at", { ascending: false })
         .eq("user_id", userId);
 
       if (error) {
@@ -59,7 +60,9 @@ export default function ProfileContent({ userId }: { userId: string }) {
         )}
         <PostList>
           {posts &&
-            posts?.map((item: Post) => <PostCard key={item.id} {...item} />)}
+            posts?.map((item: Post) => (
+              <PostCard userId={userId} key={item.id} {...item} />
+            ))}
         </PostList>
 
         {posts?.length === 0 && (

@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import RealtimePosts from "@/components/posts/posts-realtime";
+import RealtimePosts from "@/modules/post/components/posts-realtime";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -31,7 +31,7 @@ export default async function Home() {
 
   return (
     <div className="pt-4 w-full">
-      <RealtimePosts serverPosts={data} />
+      <RealtimePosts userId={user.id} serverPosts={data} />
     </div>
   );
 }

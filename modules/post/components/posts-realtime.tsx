@@ -6,7 +6,13 @@ import PostList from "./post-list";
 import PostCard from "./post-card";
 import { Post } from "@/modules/post/types";
 
-export default function RealtimePosts({ serverPosts }: { serverPosts: any }) {
+export default function RealtimePosts({
+  serverPosts,
+  userId,
+}: {
+  serverPosts: any;
+  userId: string;
+}) {
   const [posts, setPosts] = useState(serverPosts);
 
   useEffect(() => {
@@ -31,7 +37,7 @@ export default function RealtimePosts({ serverPosts }: { serverPosts: any }) {
   return (
     <PostList>
       {posts.map((post: Post) => (
-        <PostCard key={post.id} {...post}></PostCard>
+        <PostCard key={post.id} {...post} userId={userId}></PostCard>
       ))}
     </PostList>
   );

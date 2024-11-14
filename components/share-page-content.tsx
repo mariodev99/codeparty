@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Tab from "./ui/tab";
-import FormPost from "./posts/form-post";
+import FormPost from "../modules/post/components/form-post";
 import { Profile } from "@/modules/profile/types";
 
 export default function ShareContent({ data }: { data: Profile }) {

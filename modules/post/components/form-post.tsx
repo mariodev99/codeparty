@@ -1,7 +1,7 @@
 "use client";
 
 import { SetStateAction, useEffect, useRef, useState } from "react";
-import { SubmitButton } from "../ui/submit-button";
+import { SubmitButton } from "../../../components/ui/submit-button";
 import supabaseClient from "@/utils/supabase/client";
 import Image from "next/image";
 import { Crosshair, CrossIcon, Upload, X } from "lucide-react";
