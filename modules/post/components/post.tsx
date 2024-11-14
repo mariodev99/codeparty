@@ -50,13 +50,15 @@ export default async function SinglePost({
           )}
         </div>
         <div>
-          <p className="text-xl font-medium">{data?.user.username}</p>
-          <p className="text-lg">{data?.user.position}</p>
+          <p className="text-base md:text-xl font-medium">
+            {data?.user.username}
+          </p>
+          <p className="text-sm md:text-lg">{data?.user.position}</p>
         </div>
       </div>
       <div className="">
         <Link
-          className="bg-primary rounded-full px-4 py-2 font-medium"
+          className="bg-primary rounded-full px-4 py-2 font-medium text-sm md:text-base"
           href={`/profiles/${data?.user_id}`}
         >
           View profile
