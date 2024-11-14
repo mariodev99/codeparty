@@ -1,7 +1,5 @@
 "use client";
 
-import LogoutButton from "@/components/common/button-logout";
-import NavLink from "@/components/common/NavLink";
 import { Exit } from "@/components/icons";
 import Logo from "@/components/Logo";
 import {
@@ -14,15 +12,19 @@ import {
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { LeftSidenavLinks } from "@/const";
 import { signOutAction } from "@/modules/auth/actions";
-import { Plus } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function TopBar() {
   const pathname = usePathname();
   const isPostPage = pathname.includes("osts/");
+  const isProfilePage = pathname.includes("rofiles/");
 
-  const pageTitle = isPostPage ? "Post" : pathname.slice(1);
+  const pageTitle = isProfilePage
+    ? "Profile"
+    : isPostPage
+      ? "Post"
+      : pathname.slice(1);
 
   return (
     <div className="sticky top-0 w-full z-40 ">

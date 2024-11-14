@@ -7,6 +7,7 @@ import useTimeAgo from "@/hooks/useTimeago";
 import Link from "next/link";
 import LikeButton from "@/modules/interactions/components/like-button";
 import SaveButton from "@/modules/interactions/components/save-button";
+import { useRouter } from "next/navigation";
 
 function PostCard({
   user,
@@ -17,27 +18,41 @@ function PostCard({
   created_at,
   id,
   userId,
+  user_id,
 }: Post & { userId: string }) {
   const createAtDate = new Date(created_at);
   const dateago = useTimeAgo(createAtDate);
 
-  const ProfileCard = () => (
-    <div className="flex gap-2">
-      {/* avatar */}
-      <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary relative overflow-hidden ">
-        {user.avatar && (
-          <Image alt="avatar" src={user.avatar} fill objectFit="cover" />
-        )}
-      </div>
-      {/* username */}
-      <div>
-        <div className="text-foreground font-medium">{user.username}</div>
-        <div className="text-content-secondary text-[10px] md:text-xs leading-4 md:leading-5 font-regular">
-          {user.position}
+  const ProfileCard = () => {
+    const router = useRouter();
+
+    const handleGoToProfile = () => {
+      router.push(`/profiles/${user_id}`);
+    };
+    return (
+      <div
+        className="flex gap-2"
+        onClick={(event) => {
+          event.preventDefault();
+          handleGoToProfile();
+        }}
+      >
+        {/* avatar */}
+        <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary relative overflow-hidden ">
+          {user.avatar && (
+            <Image alt="avatar" src={user.avatar} fill objectFit="cover" />
+          )}
+        </div>
+        {/* username */}
+        <div>
+          <div className="text-foreground font-medium">{user.username}</div>
+          <div className="text-content-secondary text-[10px] md:text-xs leading-4 md:leading-5 font-regular">
+            {user.position}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <Link href={`/posts/${id}`}>
