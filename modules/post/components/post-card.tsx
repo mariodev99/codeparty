@@ -6,6 +6,7 @@ import { Post } from "../types";
 import useTimeAgo from "@/hooks/useTimeago";
 import Link from "next/link";
 import LikeButton from "@/modules/interactions/components/like-button";
+import SaveButton from "@/modules/interactions/components/save-button";
 
 function PostCard({
   user,
@@ -63,12 +64,12 @@ function PostCard({
         <div className="mt-4 flex justify-between">
           <div className="flex items-center gap-4 text-content-secondary">
             <LikeButton initialLikes={likes} idUser={userId} idPost={id} />
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 text-[#444]">
               <Comment />
-              <p className=" mt-1">8</p>
+              <p className=" mt-1">0</p>
             </div>
           </div>
-          <Save isSave={true} />
+          <SaveButton initialSaves={saves} idUser={userId} idPost={id} />
         </div>
       </div>
     </Link>

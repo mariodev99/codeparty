@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import LikeButton from "@/modules/interactions/components/like-button";
+import SaveButton from "@/modules/interactions/components/save-button";
 
 export default async function SinglePost({
   idPost,
@@ -82,8 +83,15 @@ export default async function SinglePost({
         </div>
       )}
 
-      <div className="mt-3">
-        <LikeButton initialLikes={data.likes} idUser={idUser} idPost={idPost} />
+      <div className="flex items-center justify-between mt-3">
+        <div className="">
+          <LikeButton
+            initialLikes={data.likes}
+            idUser={idUser}
+            idPost={idPost}
+          />
+        </div>
+        <SaveButton initialSaves={data.saves} idUser={idUser} idPost={idPost} />
       </div>
     </div>
   );

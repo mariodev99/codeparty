@@ -49,7 +49,7 @@ export default function LikeButton({
         <Star
           className={` ${isLiked ? "fill-yellow-400 stroke-yellow-500" : "fill-none stroke-content-secondary"}`}
         />
-        <p className="text-content-secondary">{likesQ}</p>
+        <p className="text-content-secondary w-3">{likesQ}</p>
       </div>
     </div>
   );

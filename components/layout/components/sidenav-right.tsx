@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Chip from "@/components/common/Chip";
 import { Searchsvg } from "@/components/icons";
+import Image from "next/image";
 
 export default function RightSidenav() {
   return (
@@ -18,7 +19,16 @@ export default function RightSidenav() {
         </form>
         <div className="flex gap-2 mt-6">
           {/* avatar */}
-          <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary"></div>
+          <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary relative overflow-hidden">
+            <Image
+              alt="mariodev logo"
+              src={
+                "https://fwrawrtdsrrumgarhmds.supabase.co/storage/v1/object/public/images/Mariodev%20Icon%20(4).svg"
+              }
+              fill
+              objectFit="cover"
+            />
+          </div>
           {/* username */}
           <div>
             <div className="text-foreground font-medium">luciano mariotti</div>

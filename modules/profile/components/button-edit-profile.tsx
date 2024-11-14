@@ -251,7 +251,7 @@ export default function ButtonEditProfile({
                 type="submit"
                 className="mt-4 font-medium text-black hover:bg-foreground"
               >
-                Create profile
+                Update
               </SubmitButton>
             </form>
           </div>
