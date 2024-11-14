@@ -35,7 +35,9 @@ export default function TopBar() {
       <div className="flex md:hidden justify-between items-center h-14 w-full px-2 text-lg font-medium bg-background opacity-95  text-white border-b border-border">
         <Sheet>
           <SheetTrigger>
-            <div className="cursor-pointer h-8 w-8 border border-border rounded-full bg-content-primary"></div>
+            <div className="cursor-pointer h-8 w-8 border border-border rounded-full bg-content-primary text-center text-primary flex items-center justify-center">
+              {"{}"}
+            </div>
           </SheetTrigger>
           <SheetContent
             side={"left"}
