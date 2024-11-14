@@ -18,6 +18,7 @@ export default async function Page() {
   const { data, error } = await supabase
     .from("posts")
     .select()
+    .order("created_at", { ascending: false })
     .contains("saves", [user.id]);
 
   if (error || !data) {
