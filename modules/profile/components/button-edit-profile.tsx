@@ -93,7 +93,6 @@ export default function ButtonEditProfile({
           <Edit className="stroke-foreground w-6 h-6" />
         </div>
       </SheetTrigger>
-      {/* <SheetTitle>Edit profile</SheetTitle> */}
       <SheetContent
         side={"bottom"}
         className=" rounded-t-2xl md:rounded-t-3xl p-0  pt-2 border-none"

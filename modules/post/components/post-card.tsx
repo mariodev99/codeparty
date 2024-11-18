@@ -1,13 +1,14 @@
 "use client";
 
-import { Comment, Like, Save } from "@/components/icons";
 import Image from "next/image";
 import { Post } from "../types";
 import useTimeAgo from "@/hooks/useTimeago";
 import Link from "next/link";
-import LikeButton from "@/modules/interactions/components/like-button";
-import SaveButton from "@/modules/interactions/components/save-button";
+import LikeButton from "@/modules/interactions/likes/like-button";
+import SaveButton from "@/modules/interactions/saves/save-button";
 import { useRouter } from "next/navigation";
+import CommentButton from "@/modules/comment/components/comment-button";
+import { useState } from "react";
 
 function PostCard({
   user,
@@ -29,6 +30,7 @@ function PostCard({
     const handleGoToProfile = () => {
       router.push(`/profiles/${user_id}`);
     };
+
     return (
       <div
         className="flex gap-2"
@@ -55,7 +57,7 @@ function PostCard({
   };
 
   return (
-    <Link href={`/posts/${id}`}>
+    <Link href={`/posts/${id}`} className="">
       <div className="w-full border border-border rounded-3xl p-4 bg-content-primary text-sm md:text-base">
         <div className="flex gap-2 justify-between">
           <ProfileCard />
@@ -79,10 +81,14 @@ function PostCard({
         <div className="mt-4 flex justify-between">
           <div className="flex items-center gap-4 text-content-secondary">
             <LikeButton initialLikes={likes} idUser={userId} idPost={id} />
-            <div className="flex items-center gap-1 text-[#444]">
-              <Comment />
-              <p className=" mt-1">0</p>
-            </div>
+            {/* <CommentDialog
+                postId={id}
+                currentUserId={userId}
+                setOpen={setOpen}
+                open={open}
+              > */}
+            <CommentButton postId={id} />
+            {/* </CommentDialog> */}
           </div>
           <SaveButton initialSaves={saves} idUser={userId} idPost={id} />
         </div>

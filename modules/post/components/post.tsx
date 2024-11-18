@@ -3,8 +3,9 @@ import { Post } from "../types";
 import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
-import LikeButton from "@/modules/interactions/components/like-button";
-import SaveButton from "@/modules/interactions/components/save-button";
+import LikeButton from "@/modules/interactions/likes/like-button";
+import SaveButton from "@/modules/interactions/saves/save-button";
+import FormComment from "@/modules/comment/components/form-comment";
 
 export default async function SinglePost({
   idPost,
@@ -69,30 +70,36 @@ export default async function SinglePost({
   );
 
   return (
-    <div className="py-5">
-      <Header />
-      <p className="text-lg mt-2 font-medium">{data?.content}</p>
-      {data?.image && (
-        <div className="mt-2 h-56 w-full relative overflow-hidden">
-          <Image
-            alt="avatar"
-            src={data.image}
-            fill
-            style={{ borderRadius: "16px", objectFit: "cover" }}
-          />
-        </div>
-      )}
+    <>
+      <div className="p-4 bg-content-primary border border-border rounded-3xl">
+        <Header />
+        <p className="text-lg mt-2 font-medium">{data?.content}</p>
+        {data?.image && (
+          <div className="mt-2 h-56 w-full relative overflow-hidden">
+            <Image
+              alt="avatar"
+              src={data.image}
+              fill
+              style={{ borderRadius: "16px", objectFit: "cover" }}
+            />
+          </div>
+        )}
 
-      <div className="flex items-center justify-between mt-3">
-        <div className="">
-          <LikeButton
-            initialLikes={data.likes}
+        <div className="flex items-center justify-between mt-3">
+          <div className="">
+            <LikeButton
+              initialLikes={data.likes}
+              idUser={idUser}
+              idPost={idPost}
+            />
+          </div>
+          <SaveButton
+            initialSaves={data.saves}
             idUser={idUser}
             idPost={idPost}
           />
         </div>
-        <SaveButton initialSaves={data.saves} idUser={idUser} idPost={idPost} />
       </div>
-    </div>
+    </>
   );
 }
