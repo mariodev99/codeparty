@@ -60,7 +60,7 @@ export default async function SinglePost({
       </div>
       <div className="">
         <Link
-          className="bg-primary rounded-full px-4 py-2 font-medium text-sm md:text-base"
+          className="bg-primary rounded-full px-4 py-2 font-medium text-xs sm:text-sm md:text-base"
           href={`/profiles/${data?.user_id}`}
         >
           View profile
