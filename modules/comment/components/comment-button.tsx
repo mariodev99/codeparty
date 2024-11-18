@@ -18,9 +18,9 @@ export default function CommentButton({ postId }: { postId: string }) {
   }, []);
 
   return (
-    <div className="flex items-center gap-1 text-content-secondary">
-      <MessageSquare className="stroke-content-secondary" />
-      <p className=" mt-1">{commentsCount}</p>
+    <div className="flex items-center gap-1 text-content-secondary group">
+      <MessageSquare className="stroke-content-secondary group-hover:stroke-foreground" />
+      <p className=" mt-1 group-hover:text-foreground">{commentsCount}</p>
     </div>
   );
 }

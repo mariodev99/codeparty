@@ -45,7 +45,7 @@ export default function SaveButton({
     >
       <div className="flex items-center gap-1">
         <Bookmark
-          className={` ${isSave ? "fill-foreground stroke-foreground" : "fill-none stroke-content-secondary"}`}
+          className={` ${isSave ? "fill-foreground stroke-foreground" : "fill-none stroke-content-secondary"} hover:fill-foreground`}
         />
       </div>
     </div>

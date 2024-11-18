@@ -45,11 +45,15 @@ export default function LikeButton({
       }}
       className="cursor-pointer"
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 group">
         <Star
-          className={` ${isLiked ? "fill-yellow-400 stroke-yellow-500" : "fill-none stroke-content-secondary"}`}
+          className={`group-hover:fill-yellow-400 group-hover:stroke-yellow-400 ${isLiked ? "fill-yellow-400 stroke-yellow-500" : "fill-none stroke-content-secondary"}`}
         />
-        <p className="text-content-secondary w-3">{likesQ}</p>
+        <p
+          className={`text-content-secondary w-3 group-hover:text-yellow-400 ${isLiked && "text-yellow-400"}`}
+        >
+          {likesQ}
+        </p>
       </div>
     </div>
   );

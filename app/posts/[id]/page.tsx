@@ -34,6 +34,7 @@ export default async function Page({
   const { data: comments, error: errorComments } = await supabase
     .from("comments")
     .select()
+    .eq("post_id", id)
     .order("created_at", { ascending: false });
 
   return (
