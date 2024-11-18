@@ -33,7 +33,9 @@ export default function RealtimeComments({
 
   return (
     <div className="grid gap-2 mt-4 ">
-      <p className="text-content-secondary">Comments</p>
+      <p className="text-content-secondary text-center">
+        {comments.length > 1 ? "Comments" : "Be the first to comment"}
+      </p>
       {comments.map((comment: Comment) => (
         <CommentCard key={comment.comment_id} {...comment} />
       ))}
