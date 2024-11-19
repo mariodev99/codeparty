@@ -14,7 +14,7 @@ export default function CommentCard({ user, content }: Comment) {
           />
         )}
       </div>
-      <div>
+      <div className="flex-1">
         <p className="font-medium">{user.username}</p>
         <p className="font-regular">{content}</p>
       </div>
