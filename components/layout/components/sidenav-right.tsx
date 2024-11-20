@@ -2,12 +2,15 @@ import Link from "next/link";
 import Chip from "@/components/common/Chip";
 import Image from "next/image";
 import SearchForm from "@/components/common/search-form";
+import { Suspense } from "react";
 
 export default function RightSidenav() {
   return (
     <div className="hidden lg:flex flex-col border-l border-border pl-4 relative">
       <div className="sticky top-0 w-full pt-4">
-        <SearchForm />
+        <Suspense fallback={<div>loading</div>}>
+          <SearchForm />
+        </Suspense>
         <div className="flex gap-2 mt-6">
           {/* avatar */}
           <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary relative overflow-hidden">
