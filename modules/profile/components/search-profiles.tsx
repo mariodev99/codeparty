@@ -16,7 +16,7 @@ export default function SearchProfiles({ query }: { query: string }) {
       const { data, error } = await supabaseClient
         .from("profiles")
         .select("username, avatar, position, id")
-        .like("username", `%${query}%`);
+        .ilike("username", `%${query}%`);
 
       if (error) {
         console.error(error);
