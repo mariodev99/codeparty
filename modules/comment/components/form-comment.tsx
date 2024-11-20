@@ -32,7 +32,7 @@ export default function FormComment({
           type="text"
           name="content"
           placeholder="Write a comment"
-          className="border-none focus:outline-none placeholder:text-content-secondary flex-1"
+          className="border-none focus:outline-none placeholder:text-content-secondary sm:placeholder:text-sm flex-1 bg-content-primary"
         />
         <SubmitButton pendingText="Sending">Send</SubmitButton>
       </form>

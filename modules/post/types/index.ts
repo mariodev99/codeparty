@@ -2,6 +2,7 @@ export interface UserPostData {
     avatar: string
     username: string
     position: string
+    id?: string
 }
 
 export interface Post {
