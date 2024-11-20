@@ -10,10 +10,10 @@ export default function Page() {
   const query = params.get("q");
   return (
     <div className="w-full py-4">
-      <Suspense fallback={<div>loading</div>}>
-        {/* <SearchForm /> */}
+      {/* <Suspense fallback={<div>loading</div>}>
+        <SearchForm />
         {query && <SearchProfiles query={query} />}
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }
