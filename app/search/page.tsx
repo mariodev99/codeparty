@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <div className="w-full py-4">
       <Suspense fallback={<div>loading</div>}>
-        <SearchForm />
+        {/* <SearchForm /> */}
         {query && <SearchProfiles query={query} />}
       </Suspense>
     </div>
