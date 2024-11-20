@@ -18,8 +18,6 @@ function SearchContent() {
 }
 
 export default function Page() {
-  const params = useSearchParams();
-  const query = params.get("q");
   return (
     <div className="w-full py-4">
       <Suspense fallback={<div>loading</div>}>
