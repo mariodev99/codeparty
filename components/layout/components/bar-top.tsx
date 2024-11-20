@@ -28,11 +28,11 @@ export default function TopBar() {
 
   return (
     <div className="sticky top-0 w-full z-40 ">
-      <div className="capitalize hidden md:flex justify-between items-center w-full px-2 py-4 text-lg font-medium bg-background opacity-95  text-foreground border-b border-border">
+      <div className="capitalize hidden md:flex justify-between items-center w-full px-4 py-4 text-lg font-medium bg-background opacity-95  text-foreground border-b border-border">
         {pageTitle}
         <ThemeSwitcher />
       </div>
-      <div className="flex md:hidden justify-between items-center h-14 w-full px-2 text-lg font-medium bg-background opacity-95  text-white border-b border-border">
+      <div className="flex md:hidden justify-between items-center h-14 w-full px-4 text-lg font-medium bg-background opacity-95  text-white border-b border-border">
         <Sheet>
           <SheetTrigger>
             <div className="cursor-pointer h-8 w-8 border border-border rounded-full bg-content-primary text-center text-primary flex items-center justify-center">

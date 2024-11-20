@@ -29,8 +29,6 @@ const config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-
-
       },
 
       keyframes: {
