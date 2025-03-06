@@ -6,7 +6,7 @@
   :root {
     --background: 0, 0%, 99%;
     --foreground: 0, 0%, 0%;
-    --primary: 196, 86%, 54%;
+    --primary: 196, 100%, 68%;
     --muted-foreground: 0, 0%, 45.1%;
     --border: 0, 0%, 89%;
     --content-primary: 0, 0%, 100%;
@@ -15,7 +15,7 @@
   .dark {
     --background: 0, 0%, 4%;
     --foreground: 0, 0%, 100%;
-    --primary: 196, 100%, 68%;
+    --primary: 196, 86%, 54%;
     --muted-foreground: 0, 0%, 45.1%;
     --border: 0, 0%, 16%;
     --content-primary: 0, 0%, 7%;

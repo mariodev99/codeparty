@@ -30,7 +30,7 @@ const LeftSidenav = () => {
       </Link>
       <form>
         <LogoutButton pendingText={"sign out..."} formAction={signOutAction}>
-          sign out
+          Sign out
         </LogoutButton>
       </form>
     </div>

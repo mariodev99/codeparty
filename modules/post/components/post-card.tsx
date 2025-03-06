@@ -8,7 +8,8 @@ import LikeButton from "@/modules/interactions/likes/like-button";
 import SaveButton from "@/modules/interactions/saves/save-button";
 import { useRouter } from "next/navigation";
 import CommentButton from "@/modules/comment/components/comment-button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import supabaseClient from "@/utils/supabase/client";
 
 function PostCard({
   user,
@@ -26,10 +27,27 @@ function PostCard({
 
   const ProfileCard = () => {
     const router = useRouter();
+    const [profileData, setProfileData] = useState<any | null>(null);
 
     const handleGoToProfile = () => {
       router.push(`/profiles/${user_id}`);
     };
+
+    useEffect(() => {
+      const getData = async () => {
+        const { data, error } = await supabaseClient
+          .from("profiles")
+          .select("username, avatar, position")
+          .eq("id", user_id)
+          .single();
+
+        if (data) {
+          setProfileData(data);
+        }
+      };
+
+      getData();
+    }, []);
 
     return (
       <div
@@ -41,8 +59,13 @@ function PostCard({
       >
         {/* avatar */}
         <div className="h-9 md:h-11 w-9 md:w-11 rounded-full bg-content-secondary relative overflow-hidden ">
-          {user.avatar && (
-            <Image alt="avatar" src={user.avatar} fill objectFit="cover" />
+          {profileData?.avatar && (
+            <Image
+              alt="avatar"
+              src={profileData.avatar}
+              fill
+              objectFit="cover"
+            />
           )}
         </div>
         {/* username */}
