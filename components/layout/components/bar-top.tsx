@@ -16,30 +16,36 @@ import { signOutAction } from "@/modules/auth/actions";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function TopBar() {
-  const pathname = usePathname();
-  const isPostPage = pathname.includes("osts/");
-  const isProfilePage = pathname.includes("rofiles/");
+const useFirstPathSegment = () => {
+  const pathname = usePathname(); // Obtiene el pathname, ej: "/Post/123123123"
+  const firstSegment = pathname.split("/").filter(Boolean)[0]; // Extrae el primer segmento
 
-  const pageTitle = isProfilePage
-    ? "Profile"
-    : isPostPage
-      ? "Post"
-      : pathname.slice(1);
+  return firstSegment;
+};
+
+export default function TopBar() {
+  const firstSegment = useFirstPathSegment();
+  const isHomePage = firstSegment.includes("home");
 
   return (
     <div className="sticky top-0 w-full z-40 ">
+      {/* Desktop */}
       <div className="capitalize hidden md:flex justify-between items-center w-full px-4 py-4 text-lg font-medium bg-background opacity-95  text-foreground border-b border-border">
-        {pageTitle}
+        {firstSegment}
         <ThemeSwitcher />
       </div>
+      {/* Mobile */}
       <div className="flex md:hidden justify-between items-center h-14 w-full px-4 text-lg font-medium bg-background opacity-95  text-white border-b border-border">
         <Sheet>
-          <SheetTrigger>
-            <div className="cursor-pointer h-8 w-8 border border-border rounded-full bg-content-primary text-center text-primary flex items-center justify-center">
-              {"{}"}
-            </div>
-          </SheetTrigger>
+          {isHomePage ? (
+            <SheetTrigger>
+              <div className="cursor-pointer h-8 w-8 border border-border rounded-full bg-content-primary text-center text-primary flex items-center justify-center">
+                {"{}"}
+              </div>
+            </SheetTrigger>
+          ) : (
+            <div className="capitalize">{firstSegment}</div>
+          )}
           <SheetContent
             side={"left"}
             className=""

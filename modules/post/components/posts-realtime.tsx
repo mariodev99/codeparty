@@ -34,6 +34,8 @@ export default function RealtimePosts({
     };
   }, [serverPosts]);
 
+  console.log("se renderizo la list");
+
   return (
     <PostList>
       {posts.map((post: Post) => (
