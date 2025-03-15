@@ -4,6 +4,7 @@ import { Exit } from "@/components/icons";
 import Logo from "@/components/Logo";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -51,14 +52,15 @@ export default function TopBar() {
               <Logo />
               <div className="flex flex-col gap-4 mt-8">
                 {LeftSidenavLinks.map((link, index) => (
-                  <Link
-                    key={link.title}
-                    href={link.path}
-                    className="text-foreground text-2xl flex items-center gap-2"
-                  >
-                    {link.icon}
-                    {link.title}
-                  </Link>
+                  <SheetClose asChild key={link.title}>
+                    <Link
+                      href={link.path}
+                      className="text-foreground text-2xl flex items-center gap-2"
+                    >
+                      {link.icon}
+                      {link.title}
+                    </Link>
+                  </SheetClose>
                 ))}
                 <div className="pt-8">
                   <Link
